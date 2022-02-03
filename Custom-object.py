@@ -1,15 +1,16 @@
 # Ben Robin's Python Object representing a purchase for a given amount
 class Purchase(object):
-    def _init_(self, amount):
+    def __init__(self, amount):
         self.amount = amount
     
     def calculateTax(self, taxPercent):
         return self.amount * taxPercent/100.0
     
-    def calculateTotal(self, taxPercent, tipPercent):
+    def calculateTip(self, tipPercent):
         return self.amount * tipPercent/100.0
+    
     def calculateTotal(self, taxPercent, tipPercent):
-        return self.amount * (1+taxPercent/100.00 + tipPercent/100.0)
+        return self.amount * (1 + taxPercent/100.00 + tipPercent/100.0)
 
 #Create Purchase object given an amount
 purchase = Purchase(100.0)
@@ -25,4 +26,4 @@ tip = purchase.calculateTip(tipPercent)
 #Display some useful information
 print ('Tax: ',tax)
 print ('Tip ', tip)
-print ('Total:', purchase.calculateTotal(taxPercent, tipPercent))
+print ('Total:', int(purchase.calculateTotal(taxPercent, tipPercent)))
